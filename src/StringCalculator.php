@@ -12,9 +12,11 @@ class StringCalculator
             return 0;
         }
 
+        $numbers = str_replace('\n',',',$numbers);
+
         if(strpos($numbers, ',')) {
-            $numbers = explode(',\n', $numbers);
-            return array_sum($numbers);
+
+            return array_sum(explode(',', $numbers));
 
         }
 
