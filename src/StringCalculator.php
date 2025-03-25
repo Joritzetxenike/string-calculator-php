@@ -12,11 +12,18 @@ class StringCalculator
             return 0;
         }
 
-        $numbers = str_replace('\n',',',$numbers);
+        $delimiter = ',';
 
-        if(strpos($numbers, ',')) {
+        if(str_starts_with($numbers, '//')){
+            $delimiter = substr($numbers, 2,1);
+            $numbers = substr($numbers, 3);
+        }
 
-            return array_sum(explode(',', $numbers));
+        $numbers = str_replace('\n',$delimiter,$numbers);
+
+        if(str_contains($numbers, $delimiter)) {
+
+            return array_sum(explode($delimiter, $numbers));
 
         }
 

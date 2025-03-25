@@ -50,4 +50,14 @@ final class StringCalculatorTest extends TestCase
         $this->assertEquals(6,$this->stringCalculator->Add('1\n2,3'));
     }
 
+    /**
+     * @test
+     *
+     */
+    public function givenNumberSeparatedByCustomDelimitersReturnsSumOfNumbers(): void
+    {
+        $this->assertEquals(3,$this->stringCalculator->Add('//%\n1%2'));
+    }
+
+
 }
