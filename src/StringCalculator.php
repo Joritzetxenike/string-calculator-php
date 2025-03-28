@@ -2,7 +2,10 @@
 
 namespace Deg540\StringCalculatorPHP;
 
+use http\Exception;
+
 use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\throwException;
 
 class StringCalculator
 {
@@ -20,6 +23,14 @@ class StringCalculator
         }
 
         $numbers = str_replace('\n',$delimiter,$numbers);
+
+       if($delimiter != '-'){
+           $counter = substr_count($numbers, '-');
+           while($counter > 0){
+               throw new \Exception('negativos no soportados -1');
+
+           }
+       }
 
         if(str_contains($numbers, $delimiter)) {
 

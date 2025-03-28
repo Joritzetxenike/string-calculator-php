@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Deg540\StringCalculatorPHP\Test;
 
 use Deg540\StringCalculatorPHP\StringCalculator;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 final class StringCalculatorTest extends TestCase
@@ -57,6 +58,27 @@ final class StringCalculatorTest extends TestCase
     public function givenNumberSeparatedByCustomDelimitersReturnsSumOfNumbers(): void
     {
         $this->assertEquals(3,$this->stringCalculator->Add('//%\n1%2'));
+    }
+
+    /**
+     * @test
+     *
+     */
+    public function givenNegativeNumberThrowException():void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('negativos no soportados -1');
+        $this->stringCalculator->Add('-1');
+    }
+    /**
+     * @test
+     *
+     */
+    public function givenTwoNegativeNumberThrowException():void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('negativos no soportados -1');
+        $this->stringCalculator->Add('-1,2');
     }
 
 
